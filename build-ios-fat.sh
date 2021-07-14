@@ -5,9 +5,11 @@ fi
 git submodule update --init --recursive
 mkdir build_device
 cd build_device
-cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
+cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/../Toolchain-iOS.cmake \
     -DBUILD_OPENSSL=true \
+    -DAWS_LC=ON \
     -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_BITCODE=NO \
     -DIOS_PLATFORM=OS64 \
     -DFIPS=${FIPS} \
     -DIOS_DEPLOYMENT_TARGET=11.0 \
@@ -28,9 +30,11 @@ fi
 
 mkdir build_sim
 cd build_sim
-cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
+cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/../Toolchain-iOS.cmake \
     -DBUILD_OPENSSL=true \
     -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_BITCODE=NO \
+    -DAWS_LC=ON \
     -DIOS_PLATFORM=${SIM_ARCH} \
     -DIOS_DEPLOYMENT_TARGET=11.0 \
     -DFIPS=${FIPS} \
