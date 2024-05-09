@@ -1,5 +1,14 @@
 #!/bin/bash
 
+docker system prune --all --force --volumes
+
+export ANDROID_NDK_HOME=~/android-ndk-r20b
+export ANDROID_HOME=~/android
+export AWS_LC=true
+export FIPS=true
+
+git submodule update --init
+
 if [ -z ${FIPS} ]; then
     FIPS=false
 fi
