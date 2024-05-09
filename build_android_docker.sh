@@ -1,5 +1,10 @@
 #!/bin/bash
 
+docker system prune --all --force --volumes
+git submodule update --init
+
+FIPS=true
+
 if [ -z ${FIPS} ]; then
     FIPS=false
 fi
