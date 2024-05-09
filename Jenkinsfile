@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build and Publish') {
             steps {
-                sh './build_android_docker.sh'
+                sh './build_android_docker.sh --push'
             }
         }
     }
